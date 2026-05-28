@@ -1,68 +1,80 @@
-# Ex.No.6 Development of Python Code Compatible with Multiple AI Tools
+# Ex.No.6 Python Programming with Multiple AI Tools
 
-## Date:25-05-2026
-## Register no.212223040192
+## Date: 25-05-2026
+
+## Register No.: 212223040243
+
 ## Name: Shanmuga Raj.K
-# Aim: Write and implement Python code that integrates with multiple AI tools to automate the task of interacting with APIs, comparing outputs, and generating actionable insights with Multiple AI Tools
 
-# AI Tools Required
-1. OpenAI  
-2. Google Gemini  
-3. Hugging Face  
+# Aim
 
-# Explanation:
+To create Python code that works with multiple AI tools for generating responses, comparing outputs, and producing meaningful insights using prompt engineering techniques.
 
-In this experiment, the persona pattern of a programmer is used for developing an application that interacts with multiple AI tools through APIs. The program sends the same prompt to different AI models, collects their responses, compares the outputs, and generates insights based on response quality, response length, and accuracy.
+---
 
-This experiment helps in:
-- Understanding API integration
-- Comparing AI-generated outputs
-- Automating evaluation processes
-- Generating actionable insights from multiple AI systems
+# AI Platforms Used
+
+1. OpenAI ChatGPT
+2. Google Gemini
+3. Hugging Face AI
+
+---
+
+# Explanation
+
+This experiment demonstrates how Python can interact with different AI platforms through APIs.
+The same prompt is provided to multiple AI systems, and their responses are collected, analyzed, and compared automatically.
+
+The application helps in:
+
+* Learning API integration
+* Understanding AI-generated responses
+* Comparing outputs from multiple AI systems
+* Generating smart insights automatically
+
+---
 
 # Requirements
 
-Install required Python libraries:
+Install required libraries using:
 
 ```bash
 pip install requests google-generativeai
 ```
-# Python Code
 
-```python
+---
+
+# Python Program
+
+```python id="5t4c8z"
 import requests
 import google.generativeai as genai
 
-# -----------------------------------
-# API Keys
-# -----------------------------------
+# --------------------------------
+# API Configuration
+# --------------------------------
 
-openai_api_key = "YOUR_OPENAI_API_KEY"
+openai_key = "YOUR_OPENAI_KEY"
+gemini_key = "YOUR_GEMINI_KEY"
 
-gemini_api_key = "YOUR_GEMINI_API_KEY"
+genai.configure(api_key=gemini_key)
 
-# -----------------------------------
-# Configure Gemini API
-# -----------------------------------
+# --------------------------------
+# User Prompt
+# --------------------------------
 
-genai.configure(api_key=gemini_api_key)
+prompt = "Explain how Artificial Intelligence helps students in education."
 
-# -----------------------------------
-# Prompt
-# -----------------------------------
+# --------------------------------
+# OpenAI Function
+# --------------------------------
 
-prompt = "Explain the benefits of Artificial Intelligence in healthcare."
-
-# -----------------------------------
-# Function for OpenAI
-# -----------------------------------
-
-def get_openai_response(prompt):
+def openai_response(prompt):
 
     url = "https://api.openai.com/v1/chat/completions"
 
     headers = {
-        "Authorization": f"Bearer {openai_api_key}",
+        "Authorization": f"Bearer {openai_key}",
         "Content-Type": "application/json"
     }
 
@@ -84,14 +96,14 @@ def get_openai_response(prompt):
 
     if response.status_code == 200:
         return response.json()["choices"][0]["message"]["content"]
-    else:
-        return "Error in OpenAI API"
 
-# -----------------------------------
-# Function for Gemini
-# -----------------------------------
+    return "OpenAI API Error"
 
-def get_gemini_response(prompt):
+# --------------------------------
+# Gemini Function
+# --------------------------------
+
+def gemini_response(prompt):
 
     model = genai.GenerativeModel("gemini-pro")
 
@@ -99,50 +111,52 @@ def get_gemini_response(prompt):
 
     return response.text
 
-# -----------------------------------
-# Collect Responses
-# -----------------------------------
+# --------------------------------
+# Generate Outputs
+# --------------------------------
 
-openai_output = get_openai_response(prompt)
+openai_output = openai_response(prompt)
 
-gemini_output = get_gemini_response(prompt)
+gemini_output = gemini_response(prompt)
 
-# -----------------------------------
-# Display Outputs
-# -----------------------------------
+# --------------------------------
+# Display Responses
+# --------------------------------
 
-print("\n========== OpenAI Response ==========\n")
+print("\n===== OpenAI Output =====\n")
 
 print(openai_output)
 
-print("\n========== Gemini Response ==========\n")
+print("\n===== Gemini Output =====\n")
 
 print(gemini_output)
 
-# -----------------------------------
-# Compare Outputs
-# -----------------------------------
+# --------------------------------
+# Compare Results
+# --------------------------------
 
-print("\n========== Comparison Summary ==========\n")
+print("\n===== Output Comparison =====\n")
 
 if len(openai_output) > len(gemini_output):
-    print("OpenAI generated a more detailed response.")
+    print("OpenAI generated a more detailed explanation.")
 else:
-    print("Gemini generated a more detailed response.")
+    print("Gemini generated a more concise explanation.")
 
-# -----------------------------------
-# Actionable Insight
-# -----------------------------------
+# --------------------------------
+# Final Insight
+# --------------------------------
 
-print("\n========== Actionable Insight ==========\n")
+print("\n===== AI Insight =====\n")
 
-print("Using multiple AI tools improves reliability and provides diverse perspectives.")
+print("Using multiple AI tools improves response diversity and reliability.")
 ```
+
 ---
 
-# How to Execute
+# Working Procedure
 
 ## Step 1: Install Python
+
 Download Python from:
 
 https://www.python.org
@@ -163,12 +177,14 @@ pip install requests google-generativeai
 
 ---
 
-## Step 3: Get API Keys
+## Step 3: Generate API Keys
 
-### OpenAI API Key
+### OpenAI Key
+
 https://platform.openai.com
 
-### Gemini API Key
+### Gemini Key
+
 https://makersuite.google.com/app/apikey
 
 ---
@@ -177,83 +193,87 @@ https://makersuite.google.com/app/apikey
 
 Replace:
 
-```python
-openai_api_key = "YOUR_OPENAI_API_KEY"
+```python id="j2gr07"
+openai_key = "YOUR_OPENAI_KEY"
 
-gemini_api_key = "YOUR_GEMINI_API_KEY"
+gemini_key = "YOUR_GEMINI_KEY"
 ```
 
 with your actual API keys.
 
 ---
 
-## Step 5: Save the File
+## Step 5: Save the Program
 
-Save as:
+Save the file as:
 
 ```bash
-multi_ai.py
+multi_ai_project.py
 ```
 
 ---
 
-## Step 6: Run the Program
+## Step 6: Execute the Program
 
 ```bash
-python multi_ai.py
+python multi_ai_project.py
 ```
 
 ---
 
 # Sample Output
 
-```text
-========== OpenAI Response ==========
+```text id="znh7ee"
+===== OpenAI Output =====
 
-Artificial Intelligence helps healthcare by improving diagnosis accuracy,
-predicting diseases early, automating medical records, and assisting doctors
-in treatment planning.
+Artificial Intelligence helps students by providing personalized learning,
+smart tutoring systems, automated evaluations, and instant learning support.
 
-========== Gemini Response ==========
+===== Gemini Output =====
 
-AI in healthcare improves patient care by enabling faster diagnosis,
-personalized treatment, disease prediction, and efficient hospital management.
+AI improves education through adaptive learning, virtual assistants,
+automated grading, and intelligent study recommendations.
 
-========== Comparison Summary ==========
+===== Output Comparison =====
 
-Gemini generated a more detailed response.
+OpenAI generated a more detailed explanation.
 
-========== Actionable Insight ==========
+===== AI Insight =====
 
-Using multiple AI tools improves reliability and provides diverse perspectives.
+Using multiple AI tools improves response diversity and reliability.
 ```
 
 ---
 
-# Analysis and Discussion
+# Analysis Table
 
-| Feature | OpenAI | Gemini |
-|----------|---------|---------|
-| Response Quality | High | High |
-| Response Length | Detailed | Detailed |
-| Accuracy | High | High |
-| Speed | Fast | Fast |
-| Ease of Use | Easy API | Easy API |
+| Feature        | OpenAI    | Gemini    |
+| -------------- | --------- | --------- |
+| Output Quality | Excellent | Excellent |
+| Response Speed | Fast      | Fast      |
+| Detail Level   | High      | Medium    |
+| API Usage      | Simple    | Simple    |
+| Accuracy       | High      | High      |
 
-## Discussion
-- OpenAI generated structured and informative responses.
-- Gemini produced concise and context-aware outputs.
-- Both AI tools provided useful insights for the same prompt.
-- Comparing multiple AI tools improves understanding of AI response behavior.
-- API integration helps automate intelligent applications efficiently.
+---
+
+# Discussion
+
+* OpenAI generated more descriptive responses.
+* Gemini provided shorter and focused outputs.
+* Both APIs successfully handled the same prompt.
+* Comparing multiple AI tools helps identify output variations.
+* API integration improves automation and intelligent application development.
 
 ---
 
 # Conclusion
-The experiment successfully demonstrated Python code integration with multiple AI tools using APIs. The outputs from OpenAI and Gemini were compared and analyzed to generate useful insights. This experiment improved understanding of API handling, AI model comparison, and automation techniques.
+
+This experiment successfully demonstrated Python integration with multiple AI platforms using APIs.
+The generated outputs were compared and analyzed to understand differences in response quality, detail level, and performance.
 
 ---
 
 # Result
-The corresponding prompt is executed successfully.
 
+The Python application successfully interacted with multiple AI tools, compared outputs, and generated meaningful insights using prompt engineering concepts.
